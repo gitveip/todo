@@ -118,3 +118,17 @@ function initChangeStatusDialog() {
         return false;
     });
 }
+
+/* 
+ * Ajax functions
+ */
+
+$.ajaxSetup ({
+    cache: false
+});
+    
+function ajaxLoadPage(loadUrl) {
+    var ajax_load = "<img src='../img/load.gif' alt='loading...' />";
+    $("#ajax-holder").html(ajax_load).load(loadUrl);
+    return false;
+}    

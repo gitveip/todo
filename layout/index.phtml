@@ -80,11 +80,11 @@
                             <div class="title"><a href="http://netbeans.org/features/php/">NetBeans IDE PHP</a></div>
                             <ul class="list">
                                 <li><span><a href="<?php echo Utils::createLink('home'); ?>">Home</a></span></li>
-                                <li><span><a href="<?php echo Utils::createLink('list', array('status' => Todo::STATUS_PENDING)); ?>"
+                                <li><span><a href="javascript:ajaxLoadPage('<?php echo Utils::createLink('list', array('status' => Todo::STATUS_PENDING, 'ajax' => 'yes')); ?>');"
                                              ><img src="img/status/PENDING.png" alt="" title="Pending TODOs" class="icon" />Pending TODOs</a></span></li>
-                                <li><span><a href="<?php echo Utils::createLink('list', array('status' => Todo::STATUS_DONE)); ?>"
+                                <li><span><a href="javascript:ajaxLoadPage('<?php echo Utils::createLink('list', array('status' => Todo::STATUS_DONE, 'ajax' => 'yes')); ?>');"
                                              ><img src="img/status/DONE.png" alt="" title="Done TODOs" class="icon" />Done TODOs</a></span></li>
-                                <li><span><a href="<?php echo Utils::createLink('list', array('status' => Todo::STATUS_VOIDED)); ?>"
+                                <li><span><a href="javascript:ajaxLoadPage('<?php echo Utils::createLink('list', array('status' => Todo::STATUS_VOIDED, 'ajax' => 'yes')); ?>');"
                                              ><img src="img/status/VOIDED.png" alt="" title="Voided TODOs" class="icon" />Voided TODOs</a></span></li>
                                 <li class="last"><span><a href="<?php echo Utils::createLink('add-edit'); ?>"
                                              ><img src="img/action/add.png" alt="" title="Add TODO" class="icon" />Add TODO</a></span></li>
@@ -101,8 +101,10 @@
                             <?php endforeach; ?>
                             </ul>
                         <?php endif; ?>
-
+                        
+                        <section id="ajax-holder">
                         <?php require $template; ?>
+                        </section>
                     </div>
                 </div>
             </div>

@@ -143,8 +143,19 @@ final class Index {
                 $flashes = Flash::getFlashes();
             }
 
-            // main template (layout)
-            require self::LAYOUT_DIR . 'index.phtml';
+            // ajax request checking
+            $is_ajax_req = 'no';
+            try {
+                $is_ajax_req = Utils::getUrlParam('ajax');                
+            } catch (Exception $exc) {}
+
+
+            if ( $is_ajax_req == 'yes') {
+                require $template;
+            } else {
+                // main template (layout)
+                require self::LAYOUT_DIR . 'index.phtml';
+            }
         }
         if (!$run) {
             die('Page "' . $page . '" has neither script nor template!');
